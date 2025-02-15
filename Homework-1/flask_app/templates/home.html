@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <!--add favicon-->
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, intial-scale=1.0">
+        <title>Home Page</title>
+      <!-- Linking CSS files -->
+        <link rel="stylesheet" href="{{ url_for('static', filename='main/css/footer.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='main/css/header.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='main/css/main.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='main/css/navbar.css') }}">
+
+    </head>
+
+    <body>
+        <div class="wrapper">
+        <!--Header-->
+            <header>
+                <div class="header-container">
+                </div>
+            </header>
+        <!--Navigation-->
+            <nav class="ex-nav">
+                <ul>
+                    <!--replace with real link-->
+                    <li>CSE 477 - Homework 1</li>
+                    <li><a href="home">Home</a></li>
+                    <li><a href="projects">Projects</a></li>
+                    <li><a href="static/main/docs/Briana_Hill_Resume_2.0.pdf">Resume</a></li>
+                    <li><a href="https://www.linkedin.com/in/briana-hill-bb2973236"><img src="static/main/images/social-linkedin.png" height="20px" width="20px"> </a></li>
+                </ul>
+            </nav>
+     <!--dropdown menu-->
+            <nav class="dropdown">
+                <button class="dropbtn"><img src="static/main/images/menu-bar.png" width="20px" height="20px"></button>
+                <div class="dropdown-content">
+                    <!--replace with real link-->
+                    <a href="home">Home</a>
+                    <a href="projects">Projects</a>
+                    <a href="static/main/docs/Briana_Hill_Resume_2.0.pdf">Resume</a>
+                    <a href="https://www.linkedin.com/in/briana-hill-bb2973236">LinkedIn</a>
+                </div>
+            </nav>
+
+            <!--Main-->
+            <main>
+                <div class="container">
+                    <div class="left-column">
+                        <img src="static/main/images/profile_pic.jpg" alt="Briana Hill">
+                    </div>
+                    <div class="right-column">
+                        <h1>Briana Hill</h1>
+                        <p>   Briana is a passionate computer science student at Michigan State University who thrives on problem-solving and creativity. With a strong interest in UX/UI design and full-stack development, she enjoys building intuitive and impactful web applications. She showcased her skills at Spartan Hackathon 9, where her team’s innovative campus services platform earned second place. Beyond coding, Briana expresses her creativity through art, cooking, and music, always seeking new ways to grow. Resilient and persevering, she embraces challenges head-on—knowing that asking for help and learning from others is just as important as the work itself.</p>
+
+                    </div>
+                </div>
+                <div class="fun-facts">
+                    <p>Gym, Programming & Game Time – I balance my time between debugging code, lifting weights, and playing sports! I’ve played basketball, lacrosse, tennis, softball, rugby, and boxing —so whether it’s on the field, in the ring, or at my desk, I’m always up for a challenge!</p>
+                </div>
+            </main>
+        </div>
+    <!--Footer-->
+        <footer>
+          <p>© Briana Hill</p>
+        </footer>
+    </body>
+</html>

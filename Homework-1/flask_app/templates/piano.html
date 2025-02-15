@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <!--add favicon-->
+        <meta charset="UTF-8">
+        <title>Piano Page</title>
+      <!-- Linking CSS files -->
+        <link rel="stylesheet" href="{{ url_for('static', filename='main/css/footer.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='main/css/header.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='main/css/main.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='main/css/navbar.css') }}">
+        <link rel="stylesheet" href="{{url_for('static', filename='piano/css/piano.css') }}">
+
+    </head>
+
+    <body>
+        <script src="{{ url_for('static', filename='piano/js/piano.js') }}"></script>
+        <div class="wrapper">
+    <!--Header-->
+            <header>
+                <div class="header-container">
+                </div>
+            </header>
+        <!--Navigation-->
+            <nav class="ex-nav">
+                <ul>
+                    <!--replace with real link-->
+                    <li>CSE 477 - Homework 1</li>
+                    <li><a href="home">Home</a></li>
+                    <li><a href="projects">Projects</a></li>
+                    <li><a href="static/main/docs/Briana_Hill_Resume_2.0.pdf">Resume</a></li>
+                    <li><a href="https://www.linkedin.com/in/briana-hill-bb2973236"><img src="static/main/images/social-linkedin.png" height="20px" width="20px"> </a></li>
+                </ul>
+            </nav>
+     <!--dropdown menu-->
+            <nav class="dropdown">
+                <button class="dropbtn"><img src="static/main/images/menu-bar.png" width="20px" height="20px"></button>
+                <div class="dropdown-content">
+                    <!--replace with real link-->
+                    <a href="home">Home</a>
+                    <a href="projects">Projects</a>
+                    <a href="static/main/docs/Briana_Hill_Resume_2.0.pdf">Resume</a>
+                    <a href="https://www.linkedin.com/in/briana-hill-bb2973236">LinkedIn</a>
+                </div>
+            </nav>
+
+            <!--Main-->
+           <main>
+               <div class="parent-container">
+                   <div id="content-container">
+                       <p class="awoke">I Have Awoken</p>
+                   </div>
+                   <div class="piano-background">
+                        <div class="piano-name">The Great Old One</div>
+                        <div class="piano-poem">
+                            <p>"Behold piano great and old, it's master slumbers in far off cold, If you wish to see anew, call out to it - we see you."</p>
+                        </div>
+                        <div class="piano-container">
+                            <div id="piano">
+                                <div class="white-keys">
+                                    <div id="A" class="white key"><h1 class="white-key-note">A</h1></div>
+                                    <div id="S" class="white key"><h1 class="white-key-note">S</h1></div>
+                                    <div id="D" class="white key"><h1 class="white-key-note">D</h1></div>
+                                    <div id="F" class="white key"><h1 class="white-key-note">F</h1></div>
+                                    <div id="G" class="white key"><h1 class="white-key-note">G</h1></div>
+                                    <div id="H" class="white key"><h1 class="white-key-note">H</h1></div>
+                                    <div id="J" class="white key"><h1 class="white-key-note">J</h1></div>
+                                    <div id="K" class="white key"><h1 class="white-key-note">K</h1></div>
+                                    <div id="L" class="white key"><h1 class="white-key-note">L</h1></div>
+                                    <div id="COLON" class="white key"><h1 class="white-key-note">;</h1></div>
+                                </div>
+                                <div class="black-keys">
+                                    <div id="W" class="black key"><h1 class="black-key-note">W</h1></div>
+                                    <div id="E" class="black key"><h1 class="black-key-note">E</h1></div>
+                                    <div id="T" class="black key"><h1 class="black-key-note">T</h1></div>
+                                    <div id="Y" class="black key"><h1 class="black-key-note">Y</h1></div>
+                                    <div id="U" class="black key"><h1 class="black-key-note">U</h1></div>
+                                    <div id="O" class="black key"><h1 class="black-key-note">O</h1></div>
+                                    <div id="P" class="black key"><h1 class="black-key-note">P</h1></div>
+                                </div>
+                            </div>
+                        </div>
+                   </div>
+               </div>
+           </main>
+
+    <!--Footer-->
+            <footer>
+              <p>© Briana Hill</p>
+            </footer>
+        </div>
+    </body>
+</html>

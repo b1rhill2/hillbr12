@@ -1,0 +1,147 @@
+
+.parent-container {
+    position: relative;
+    width: 100%;
+    max-width: 1050px;
+    height: 420px;
+     padding: 60px 40px 0px 40px;
+    margin-bottom: 50px;
+}
+
+#content-container, .piano-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: opacity 1s ease;
+    border-radius: 60px 40px 0px 0px;
+}
+
+.piano-background {
+    justify-content: center;
+    background-color: #333;
+    padding: 60px 20px 0px 20px;
+    opacity: 1; /* Start visible */
+}
+
+#content-container {
+    background-image: url("../images/texture.jpeg");
+     padding: 60px 20px 0px 20px;
+    background-size: cover;
+    background-position: center;
+    opacity: 0; /* Start invisible if piano is visible */
+}
+.awoke{
+    position: relative;
+    text-align: center;
+    font-size: 100px;
+    margin: 0;
+    color: #ffffff;
+    font-family: "Brush Script MT", "Brush Script Std", cursive;
+}
+
+.piano-name {
+    position: relative;
+    bottom: 10px;
+    width: 100%;
+    text-align: center;
+    color: white;
+    font-size: 40px;
+     font-family: "Brush Script MT", "Brush Script Std", cursive;
+}
+
+.piano-poem p {
+    text-align: center;
+    margin: 20px;
+    color: white;
+}
+
+.piano-container {
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+}
+
+#piano {
+    position: relative;
+    width: 90vw;
+    max-width: 1050px;
+    aspect-ratio: 14 / 1;
+    height: 350px;
+    background: #333;
+    border: 5px solid #000;
+    border-radius: 5px;
+}
+.white-keys{
+    position: absolute;
+    width: 100%;
+    top: 0;
+    display: flex;
+}
+
+.white-keys .key {
+    background: #fff;
+    /*width: 70px;*/
+    height: 345px;
+    width: calc(100% / 10);
+    float: left;
+    border: 2px solid #000;
+    border-radius: 5px;
+}
+
+.white-keys .white-key-note {
+    color: white;
+    padding-top: 280px;
+}
+.black-keys .black-key-note {
+    color: black;
+    padding-top: 130px;
+}
+
+.black-keys {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    display: flex;
+
+}
+
+.black-keys .key {
+    background: #000;
+    width: calc(100% / 15); /* Adjust width to parent */
+    height: 200px;
+    position: absolute;
+    border-radius: 10px;
+    border: 4px solid #000;
+
+}
+
+
+.black-keys .key:nth-child(1) {
+    left: calc(100% / 21 * 1.2);
+}
+
+.black-keys .key:nth-child(2) {
+    left: calc(100% / 21 * 3.5);
+}
+
+.black-keys .key:nth-child(3) {
+    left: calc(100% / 21 * 7.50);
+}
+
+.black-keys .key:nth-child(4) {
+    left: calc(100% / 21 * 9.65);
+}
+
+.black-keys .key:nth-child(5) {
+    left: calc(100% / 21 * 11.75);
+}
+
+.black-keys .key:nth-child(6) {
+    left: calc(100% / 21 * 15.95);
+}
+
+.black-keys .key:nth-child(7) {
+    left: calc(100% / 21 * 18.1);
+}
