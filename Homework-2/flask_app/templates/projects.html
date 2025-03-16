@@ -1,0 +1,27 @@
+{% extends 'shared/layout.html' %}
+{% block maincontent %}
+        <div class="wrapper">
+            <!--Main-->
+            <main>
+                <div class="top-column">
+                    <h1>Current Projects</h1>
+                    <h3>Capstone 2025:</h3>
+                    <p> Next Step Insight is a web application that significantly reduces the time needed to review possible candidates by filtering people out based on selected criteria. It utilizes a machine learning model to automatically recommend employees who are a good match.
+	Users start by selecting a position that needs to be filled along with selecting any filters to apply to the search. Our software eliminates potential candidates that do not align with the search criteria and highlights those the machine learning model recommends.
+	Our software cuts down on the time that Auto-Owners’ employees spend organizing potential candidate’s details and allows them to spend more time comparing the candidates. This gives Auto-Owners the ability to efficiently fill available roles so they can continue to have a capable and well-staffed team.
+	The front end of our application is built with HTML, CSS and TypeScript in Angular, while the back end is implemented with Spring Boot 3.
+	All the data our application uses is stored in a Microsoft SQL database.</p>
+                </div>
+                <div class="container">
+                    <div class="left-column">
+                        <a class="piano-image" href="/piano">
+                            <img src="static/main/images/piano.jpeg" alt="image of piano">
+                        </a>
+                    </div>
+                    <div class="right-column">
+                        <p><a>I have built an interactive piano web app using HTML, CSS, and JavaScript. This project allows users to play notes with their keyboard, creating a fun and engaging musical experience. I’ve focused on responsive design, smooth audio playback, and an intuitive interface to make it accessible for all users. To add an extra layer of excitement, I’ve hidden a special Easter egg—if you play certain notes in the right order, a secret feature unlocks, but only if you know the code! As I continue developing it, I’m exploring features like customizable sound settings and visual effects to enhance the experience. Click the piano to see the project! </a></p>
+                    </div>
+                </div>
+            </main>
+        </div>
+{% endblock %}

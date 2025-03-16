@@ -1,0 +1,17 @@
+"inst_id","title","responsibilities","start_date","end_date"
+"1",Auto Owners Capstone,"Developed both front-end and back-end features for an HR suite web application using Angular and RESTful APIs.
+Implemented data binding, pagination, and state management for improved performance and scalability.
+Collaborated with the team on UI/UX improvements and ensured secure user authentication and data management.","2025-01-13","2025-04-03"
+"1",Spartan Connect,"Designed and developed key features of a student networking platform using HTML, CSS, JavaScript, and Firebase.
+Integrated real-time database management and user authentication with Firebase.
+Ensured smooth UI/UX design and collaborated on troubleshooting issues to improve functionality.","2024-01-01",2024-01-02
+"1",Personal Website,"Built a responsive personal website using HTML, CSS, JavaScript, Jinja, and MySQL.
+Managed data storage with MySQL and deployed the site using Docker on Google Cloud.
+Ensured dynamic content rendering through Jinja templating and implemented backend functions for interactive user experience.","2025-01-13","2025-05-01"
+"1",Spartan Hero,"Developed a Guitar Hero-inspired game using C++, wxWidgets, and wxFormBuilder for the user interface.
+Managed the project with Git for version control and used CMake for cross-platform building.
+Created documentation with Doxygen and wrote unit tests using Google Test.","2024-02-01","2024-03-01"
+"1",Pacman Maze Solver,"Implemented algorithms in Python for an AI-driven Pacman to solve mazes efficiently.
+Focused on search algorithms like A*, BFS, and DFS for pathfinding optimization.
+Developed a visual representation of the Pacman navigating mazes to demonstrate algorithm effectiveness.","2024-01-01","2024-02-01"
+"1",Recipe App for College Students,"Designed and implemented a responsive UI in Android Studio. Developed secure authentication, local/remote storage, and image handling. Maintained state across screen changes and led wireframing for scalable design","2024-09-08","2024-12-12"

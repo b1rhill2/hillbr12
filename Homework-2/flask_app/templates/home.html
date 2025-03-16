@@ -1,0 +1,23 @@
+{% extends 'shared/layout.html' %}
+
+{% block maincontent %}
+        <div class="wrapper">
+            <!--Main-->
+            <main>
+                <div class="container">
+                    <div class="left-column">
+                        <img src="static/main/images/profile_pic.jpg" alt="Briana Hill">
+                    </div>
+                    <div class="right-column">
+                        <h1>Briana Hill</h1>
+                        <p>   Briana is a passionate computer science student at Michigan State University who thrives on problem-solving and creativity. With a strong interest in UX/UI design and full-stack development, she enjoys building intuitive and impactful web applications. She showcased her skills at Spartan Hackathon 9, where her team’s innovative campus services platform earned second place. Beyond coding, Briana expresses her creativity through art, cooking, and music, always seeking new ways to grow. Resilient and persevering, she embraces challenges head-on—knowing that asking for help and learning from others is just as important as the work itself.</p>
+
+                    </div>
+                </div>
+                <div class="fun-facts">
+                    <p>Gym, Programming & Game Time – I balance my time between debugging code, lifting weights, and playing sports! I’ve played basketball, lacrosse, tennis, softball, rugby, and boxing —so whether it’s on the field, in the ring, or at my desk, I’m always up for a challenge!</p>
+                </div>
+            </main>
+        </div>
+    <p>A fun fact about me: <b>{{fun_fact}}</b> </p>
+{% endblock %}

@@ -1,0 +1,75 @@
+<!-- FILL ME IN WITH CODE FOR YOUR PAGE LAYOUT -->
+<!DOCTYPE html>
+<html lang="eng">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Briana Hill's personal page</title>
+  <link rel="stylesheet"    href="{{ url_for('static', filename='main/css/main.css') }}">
+  <link rel="shortcut icon" href="{{ url_for('static', filename='main/images/favicon.ico') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='main/css/footer.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='main/css/header.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='main/css/navbar.css') }}">
+  <link rel="stylesheet" href="{{url_for('static', filename='piano/css/piano.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='main/css/resume.css') }}">
+
+
+  {% block extracss %}{% endblock %}
+  <script src="{{ url_for('static', filename='main/js/main.js') }}" defer></script>
+  <script src="{{ url_for('static', filename='piano/js/piano.js') }}"></script>
+  {% block extrajs %}{% endblock %}
+</head>
+
+<body>
+    <article>
+    <!-- The header  -->
+    <header>
+         <div class="header-container"></div>
+    </header>
+
+    <!-- The navigation bar -->
+     <nav class="ex-nav">
+        <ul>
+            <!--replace with real link-->
+            <li>CSE 477 - Homework 1</li>
+            <li><a href="home">Home</a></li>
+            <li><a href="projects">Projects</a></li>
+            <li><a href="resume">Resume</a></li>
+            <li><a href="https://www.linkedin.com/in/briana-hill-bb2973236"><img src="static/main/images/social-linkedin.png" height="20px" width="20px"> </a></li>
+        </ul>
+     </nav>
+
+    <nav class="dropdown">
+        <button class="dropbtn"><img src="static/main/images/menu-bar.png" width="20px" height="20px"></button>
+        <div class="dropdown-content">
+            <!--replace with real link-->
+            <a href="home">Home</a>
+            <a href="projects">Projects</a>
+            <a href="resume">Resume</a>
+            <a href="https://www.linkedin.com/in/briana-hill-bb2973236">LinkedIn</a>
+        </div>
+    </nav>
+
+    <!-- The main content  -->
+    <main>
+      {% block maincontent %}{% endblock %}
+    </main>
+
+    <!-- The footer of the file -->
+    <footer>
+        <p>© 2025 Briana R. Hill</p>
+    </footer>
+
+    </article>
+  
+</body>
+
+</html>
+
+
+
+
+
+
+
+
