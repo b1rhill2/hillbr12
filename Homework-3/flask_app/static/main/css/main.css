@@ -1,0 +1,114 @@
+/*body {*/
+/*background : black;*/
+/*color: white;*/
+/*}*/
+
+main {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 100vw;
+    margin: 10vh;
+    flex: 1;
+}
+
+.container {
+    display: flex;
+    max-height: 50vh;
+    max-width: 80vw;
+    padding: 20px;
+    overflow: hidden;
+    background-color: #e5e5e5;
+    border: 2px solid #aaaaaa;
+
+}
+
+/* Column styling */
+.left-column, .right-column {
+    flex: 1;
+}
+
+.top-column{
+    flex: 1;
+    object-fit: contain;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: justify; /* Justify text */
+     line-height: 20px;
+    border: 2px solid #aaaaaa;
+     background-color: #e5e5e5;
+    margin-bottom: 20px;
+}
+.top-column h3{
+    text-align: center;
+}
+
+
+.left-column img {
+    border-right: 2px solid #aaaaaa;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+
+}
+
+.piano-image{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+h1{
+text-align: center;
+}
+
+.right-column {
+        overflow: auto;
+    object-fit: contain;
+    padding-left: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: justify; /* Justify text */
+    line-height: 20px;
+    font-size: 16px;
+}
+
+
+.fun-facts  {
+    display: flex;
+    max-width: 80vw;
+    margin: 20px auto; /* Center horizontally and add vertical spacing */
+    text-align: center;
+     line-height: 20px;
+    border: 2px solid #aaaaaa;
+     background-color: #e5e5e5;
+}
+
+/* Media Query for single column layout */
+@media (max-width: 650px) {
+    .container {
+        flex-direction: column;
+        max-height: none;
+    }
+
+    .left-column, .right-column .top-column {
+        flex: none; /* Disable flex sizing */
+        max-width: 80vw;
+        width: 100%; /* Full width */
+    }
+
+    /* Adjust text visibility and overflow for smaller screens */
+    .left-column, .right-column .top-column {
+        overflow: visible; /* Show overflow */
+    }
+    .left-column img {
+         width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+}
+

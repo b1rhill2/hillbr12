@@ -1,0 +1,3 @@
+"email","password","role"
+"owner@email.com","password","owner"
+"guest@email.com","password","guest"

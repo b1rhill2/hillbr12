@@ -1,0 +1,108 @@
+{% extends 'shared/layout.html' %}
+<!-- FILL ME IN WITH CODE FOR YOUR PAGE LAYOUT -->
+{% block maincontent %}
+    <!--Container that holds all the resume data -->
+    <main class="container">
+        <div class="contact-container">
+            <h1 class="contact-name">BRIANA HILL</h1>
+            <p class="contact-email">Email: <a href="mailto:b1rhill2@yahoo.com">b1rhill2@yahoo.com</a></p>
+            <p class="contact-phone">Phone: (313) 520-2247</p>
+            <p class="contact-linkedin">LinkedIn: <a class="contact-link" href="https://www.linkedin.com/in/briana-hill-bb2973236/" target="_blank">www.linkedin.com/in/briana-hill-bb2973236/</a></p>
+            <div class="contact-separator"></div>
+        </div>
+    </main>
+        <!-- loading data -->
+        {% for inst_id, inst in resume_data.items() %}
+            <div class="institution">
+                <!-- Institution Name -->
+                <h2>{{ inst.name }}</h2>
+
+                <!-- Institution Details -->
+                <p class="right-aligned">
+                    {% if inst.department and inst.department != 'NULL' %}
+                        {{ inst.department }},
+                    {% endif %}
+                    {% if inst.address and inst.address != 'NULL' %}
+                        {{ inst.address }},
+                    {% endif %}
+                    {% if inst.city and inst.city != 'NULL' %}
+                        {{ inst.city }},
+                    {% endif %}
+                    {% if inst.state and inst.state != 'NULL' %}
+                        {{ inst.state }}
+                    {% endif %}
+                    {% if inst.zip and inst.zip != 'NULL' %}
+                        {{ inst.zip }},
+                    {% endif %}
+                    {% if inst.type and inst.type != 'NULL' %}
+                        {{ inst.type }}
+                    {% endif %}
+                </p>
+            </div>
+            <ul class="position-list">
+                {% for pos_id, position in inst.positions.items() %}
+                    <li class="position">
+                        <!-- Title -->
+                        <h3>{{ position.title }}</h3>
+
+                        <!-- Start and End Dates -->
+                        <p class="right-aligned">
+                            {% if position.start_date %}{{ position.start_date }}{% endif %}
+                            {% if position.end_date %} - {{ position.end_date }}{% else %} - Present{% endif %}
+                        </p>
+
+                        <!-- Responsibilities -->
+                        {% if position.responsibilities and position.responsibilities != 'NULL' %}
+                            <p>{{ position.responsibilities }}</p>
+                        {% endif %}
+
+                        <!-- Experience List -->
+                        <ul class="experience-list">
+                            {% for exp_id, experience in position.experiences.items() %}
+                                <li class="experience">
+                                    <!-- Experience Name -->
+                                    {% if experience.name and experience.name != 'NULL' %}
+                                        <h3>
+                                            {% if experience.hyperlink and experience.hyperlink != 'NULL' %}
+                                                <a href="{{ experience.hyperlink }}">{{ experience.name }}</a>
+                                            {% else %}
+                                                {{ experience.name }}
+                                            {% endif %}
+                                        </h3>
+                                    {% endif %}
+
+                                    <!-- Start and End Dates -->
+                                    <p class="right-aligned">
+                                        {% if experience.start_date %}{{ experience.start_date }}{% endif %}
+                                        {% if experience.end_date %} - {{ experience.end_date }}{% else %} - Present{% endif %}
+                                    </p>
+
+                                    <!-- Description -->
+                                    {% if experience.description and experience.description != 'NULL' %}
+                                        <p>{{ experience.description }}</p>
+                                    {% endif %}
+
+                                    <!-- Skills List -->
+                                    <ul class="skill-list">
+                                        {% for skill_id, skill in experience.skills.items() %}
+                                            <li class="skill">
+                                                <!-- Skill Name -->
+                                                {% if skill.name and skill.name != 'NULL' %}
+                                                    <h3>{{ skill.name }}</h3>
+                                                {% endif %}
+
+                                                <!-- Skill Level -->
+                                                {% if skill.skill_level and skill.skill_level != 'NULL' %}
+                                                    <p>{{ skill.skill_level }}</p>
+                                                {% endif %}
+                                            </li>
+                                        {% endfor %}
+                                    </ul>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% endfor %}
+{% endblock %}
