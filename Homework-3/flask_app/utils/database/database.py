@@ -9,20 +9,34 @@ import os
 import cryptography
 from cryptography.fernet import Fernet
 from math import pow
+from flask_app.utils.database.db_config import get_db_config
 
 class database:
 
-    def __init__(self, purge = False):
+    # def __init__(self, purge = False):
+    #
+    #     # Grab information from the configuration file
+    #     self.database       = 'db'
+    #     # self.host = '127.0.0.1'
+    #     self.host = '34.60.68.195'
+    #     # self.host = 'host.docker.internal'
+    #     self.user           = 'master'
+    #     self.port           = 3306
+    #     self.password       = 'master'
+    #     self.tables         = ['institutions', 'positions', 'experiences', 'skills','feedback', 'users']
+    #
+    def __init__(self, purge=False):
+        # Get database configuration
+        db_config = get_db_config()
 
-        # Grab information from the configuration file
-        self.database       = 'db'
-        # self.host           = '127.0.0.1'
-        self.host = 'host.docker.internal'
-        self.user           = 'master'
-        self.port           = 3306
-        self.password       = 'master'
-        self.tables         = ['institutions', 'positions', 'experiences', 'skills','feedback', 'users']
-        
+        # Set attributes
+        self.database = db_config['database']
+        self.host = db_config['host']
+        self.user = db_config['user']
+        self.port = db_config['port']
+        self.password = db_config['password']
+        self.tables = ['institutions', 'positions', 'experiences', 'skills', 'feedback', 'users']
+
         # NEW IN HW 3-----------------------------------------------------------------
         self.encryption     =  {   'oneway': {'salt' : b'averysaltysailortookalongwalkoffashortbridge',
                                                  'n' : int(pow(2,5)),
@@ -249,8 +263,8 @@ class database:
 
 
     def getResumeData(self):
-        cnx = mysql.connector.connect(user='master', password='master', host='host.docker.internal', database='db')
-        # cnx = mysql.connector.connect(user='master', password='master', host='34.60.68.195', database='db')
+        # cnx = mysql.connector.connect(user='master', password='master', host='host.docker.internal', database='db')
+        cnx = mysql.connector.connect(user='master', password='master', host='34.60.68.195', database='db')
         cursor = cnx.cursor(dictionary=True)
 
         # start building the data
