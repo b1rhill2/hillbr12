@@ -5,6 +5,8 @@ document.addEventListener('DOMContentLoaded', function() {
     window.lastInteractionTime = Date.now();
     window.waitingForDataRefresh = false;
 
+    document.addEventListener('DOMContentLoaded', setupPeriodicDataRefresh);
+
     // Add event listeners to track user interactions
     document.addEventListener('click', function () {
         window.lastInteractionTime = Date.now();
@@ -13,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function() {
     document.addEventListener('mousemove', function () {
         // Only update the time every second to avoid excessive updates
         const now = Date.now();
-        if (now - window.lastInteractionTime > 1000) {
+        if (now - window.lastInteractionTime > 500) {
             window.lastInteractionTime = now;
         }
     });
@@ -763,6 +765,32 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Start the first attempt
         attemptSave();
+    }
+
+    function setupPeriodicDataRefresh() {
+        // Check for new data every 5 seconds, but only if user isn't actively interacting
+        setInterval(() => {
+            const now = Date.now();
+            // Only refresh if no interaction in the last 2 seconds and not waiting for data
+            if (now - window.lastInteractionTime > 2000 && !window.waitingForDataRefresh) {
+                window.waitingForDataRefresh = true;
+
+                // Fetch latest availability data from server
+                fetch('/get-all-availability?event_id=' + eventId)
+                    .then(response => response.json())
+                    .then(data => {
+                        // Update the global participant availability data
+                        window.participantAvailability = data;
+                        // Update the heatmap with the fresh data
+                        updateHeatmap();
+                        window.waitingForDataRefresh = false;
+                    })
+                    .catch(error => {
+                        console.error('Error refreshing availability data:', error);
+                        window.waitingForDataRefresh = false;
+                    });
+            }
+        }, 5000);
     }
 
 

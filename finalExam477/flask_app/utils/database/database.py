@@ -19,10 +19,19 @@ class database:
 
         # Set attributes
         self.database = db_config['database']
-        self.host = db_config['host']
         self.user = db_config['user']
-        self.port = db_config['port']
         self.password = db_config['password']
+
+        # Check if we're using unix socket or host
+        if 'unix_socket' in db_config:
+            self.unix_socket = db_config['unix_socket']
+            self.host = None
+            self.port = None
+        else:
+            self.host = db_config['host']
+            self.port = db_config['port']
+            self.unix_socket = None
+
         self.tables = ['users']
 
         # NEW IN HW 3-----------------------------------------------------------------
@@ -37,13 +46,24 @@ class database:
 
     def query(self, query = "SELECT * FROM users", parameters = None):
 
-        cnx = mysql.connector.connect(host     = self.host,
-                                      user     = self.user,
-                                      password = self.password,
-                                      port     = self.port,
-                                      database = self.database,
-                                      charset  = 'latin1'
-                                     )
+        # Create connection
+        if self.unix_socket:
+            cnx = mysql.connector.connect(
+                user=self.user,
+                password=self.password,
+                database=self.database,
+                unix_socket=self.unix_socket,
+                charset='latin1'
+            )
+        else:
+            cnx = mysql.connector.connect(
+                host=self.host,
+                user=self.user,
+                password=self.password,
+                port=self.port,
+                database=self.database,
+                charset='latin1'
+            )
 
 
         if parameters is not None:
@@ -67,7 +87,20 @@ class database:
 
     def createTables(self, purge=False, data_path='flask_app/database/'):
         # mysql connection
-        cnx = mysql.connector.connect(user=self.user, password=self.password, host=self.host, database=self.database)
+        if self.unix_socket:
+            cnx = mysql.connector.connect(
+                user=self.user,
+                password=self.password,
+                database=self.database,
+                unix_socket=self.unix_socket
+            )
+        else:
+            cnx = mysql.connector.connect(
+                user=self.user,
+                password=self.password,
+                host=self.host,
+                database=self.database
+            )
         cursor = cnx.cursor()
 
         cursor.execute("SET SESSION innodb_lock_wait_timeout = 120;")
@@ -232,8 +265,20 @@ class database:
         return encrypted_string
 
     def createUser(self, email='me@email.com', password='password', role='user'):
-        cnx = mysql.connector.connect(user=self.user, password=self.password, host=self.host,
-                                      database=self.database)
+        if self.unix_socket:
+            cnx = mysql.connector.connect(
+                user=self.user,
+                password=self.password,
+                database=self.database,
+                unix_socket=self.unix_socket
+            )
+        else:
+            cnx = mysql.connector.connect(
+                user=self.user,
+                password=self.password,
+                host=self.host,
+                database=self.database
+            )
         cursor = cnx.cursor()
         cursor.execute("SET SESSION innodb_lock_wait_timeout = 120;")
 
@@ -303,8 +348,20 @@ class database:
 
     def authenticate(self, email='me@email.com', password='password'):
         print(f"authenticating")
-        cnx = mysql.connector.connect(user=self.user, password=self.password, host=self.host,
-                                      database=self.database)
+        if self.unix_socket:
+            cnx = mysql.connector.connect(
+                user=self.user,
+                password=self.password,
+                database=self.database,
+                unix_socket=self.unix_socket
+            )
+        else:
+            cnx = mysql.connector.connect(
+                user=self.user,
+                password=self.password,
+                host=self.host,
+                database=self.database
+            )
         cursor = cnx.cursor()
         cursor.execute("SET SESSION innodb_lock_wait_timeout = 120;")
 
@@ -364,8 +421,20 @@ class database:
         if invitees is None:
             invitees = [""]
 
-        cnx = mysql.connector.connect(user=self.user, password=self.password, host=self.host,
-                                      database=self.database)
+        if self.unix_socket:
+            cnx = mysql.connector.connect(
+                user=self.user,
+                password=self.password,
+                database=self.database,
+                unix_socket=self.unix_socket
+            )
+        else:
+            cnx = mysql.connector.connect(
+                user=self.user,
+                password=self.password,
+                host=self.host,
+                database=self.database
+            )
         cursor = cnx.cursor()
         cursor.execute("SET SESSION innodb_lock_wait_timeout = 120;")
 
@@ -416,8 +485,20 @@ class database:
             return {'success': 0, 'error': f'Database error: {str(err)}'}
 
     def eventDataRequest(self, event_id):
-        cnx = mysql.connector.connect(user=self.user, password=self.password, host=self.host,
-                                      database=self.database)
+        if self.unix_socket:
+            cnx = mysql.connector.connect(
+                user=self.user,
+                password=self.password,
+                database=self.database,
+                unix_socket=self.unix_socket
+            )
+        else:
+            cnx = mysql.connector.connect(
+                user=self.user,
+                password=self.password,
+                host=self.host,
+                database=self.database
+            )
         cursor = cnx.cursor(dictionary=True)
         cursor.execute("SET SESSION innodb_lock_wait_timeout = 120;")
 
@@ -455,8 +536,20 @@ class database:
         return event_data
 
     def myEvents(self, user_email):
-        cnx = mysql.connector.connect(user=self.user, password=self.password, host=self.host,
-                                      database=self.database)
+        if self.unix_socket:
+            cnx = mysql.connector.connect(
+                user=self.user,
+                password=self.password,
+                database=self.database,
+                unix_socket=self.unix_socket
+            )
+        else:
+            cnx = mysql.connector.connect(
+                user=self.user,
+                password=self.password,
+                host=self.host,
+                database=self.database
+            )
         cursor = cnx.cursor(dictionary=True)
         cursor.execute("SET SESSION innodb_lock_wait_timeout = 120;")
 
@@ -484,8 +577,20 @@ class database:
         return my_events_with_creator
 
     def getUserByID (self, user_email):
-        cnx = mysql.connector.connect(user=self.user, password=self.password, host=self.host,
-                                      database=self.database)
+        if self.unix_socket:
+            cnx = mysql.connector.connect(
+                user=self.user,
+                password=self.password,
+                database=self.database,
+                unix_socket=self.unix_socket
+            )
+        else:
+            cnx = mysql.connector.connect(
+                user=self.user,
+                password=self.password,
+                host=self.host,
+                database=self.database
+            )
         cursor = cnx.cursor(dictionary=True, buffered=True)
         cursor.execute("SET SESSION innodb_lock_wait_timeout = 120;")
 
@@ -497,8 +602,20 @@ class database:
         return result
 
     def get_event_access(self, event_id, user_email):
-        cnx = mysql.connector.connect(user=self.user, password=self.password, host=self.host,
-                                      database=self.database)
+        if self.unix_socket:
+            cnx = mysql.connector.connect(
+                user=self.user,
+                password=self.password,
+                database=self.database,
+                unix_socket=self.unix_socket
+            )
+        else:
+            cnx = mysql.connector.connect(
+                user=self.user,
+                password=self.password,
+                host=self.host,
+                database=self.database
+            )
         cursor = cnx.cursor(dictionary=True, buffered=True)
 
         try:
@@ -542,8 +659,20 @@ class database:
                 user_id = user_id['user_id']
 
             # Create connection with transaction isolation level set
-            cnx = mysql.connector.connect(user=self.user, password=self.password, host=self.host,
-                                          database=self.database)
+            if self.unix_socket:
+                cnx = mysql.connector.connect(
+                    user=self.user,
+                    password=self.password,
+                    database=self.database,
+                    unix_socket=self.unix_socket
+                )
+            else:
+                cnx = mysql.connector.connect(
+                    user=self.user,
+                    password=self.password,
+                    host=self.host,
+                    database=self.database
+                )
             # Set transaction isolation level to READ COMMITTED to reduce lock contention
             cursor = cnx.cursor()
             cursor.execute("SET SESSION TRANSACTION ISOLATION LEVEL READ COMMITTED")
@@ -635,8 +764,20 @@ class database:
             if isinstance(user_id, dict) and 'user_id' in user_id:
                 user_id = user_id['user_id']
 
-            cnx = mysql.connector.connect(user=self.user, password=self.password, host=self.host,
-                                          database=self.database)
+            if self.unix_socket:
+                cnx = mysql.connector.connect(
+                    user=self.user,
+                    password=self.password,
+                    database=self.database,
+                    unix_socket=self.unix_socket
+                )
+            else:
+                cnx = mysql.connector.connect(
+                    user=self.user,
+                    password=self.password,
+                    host=self.host,
+                    database=self.database
+                )
             cursor = cnx.cursor(dictionary=True)
             cursor.execute("SET SESSION innodb_lock_wait_timeout = 120;")
 
@@ -658,8 +799,20 @@ class database:
         Fetch availability data for all participants of an event
         """
         try:
-            cnx = mysql.connector.connect(user=self.user, password=self.password, host=self.host,
-                                          database=self.database)
+            if self.unix_socket:
+                cnx = mysql.connector.connect(
+                    user=self.user,
+                    password=self.password,
+                    database=self.database,
+                    unix_socket=self.unix_socket
+                )
+            else:
+                cnx = mysql.connector.connect(
+                    user=self.user,
+                    password=self.password,
+                    host=self.host,
+                    database=self.database
+                )
             cursor = cnx.cursor(dictionary=True)
             cursor.execute("SET SESSION innodb_lock_wait_timeout = 120;")
 
