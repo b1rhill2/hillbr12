@@ -19,6 +19,13 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
+/**
+ * Sends an AJAX POST request to the "/processCreateEvent" endpoint to create a new event.
+ * It gathers event details (name, dates, times, invitees) from the form inputs,
+ * logs the data to the console, and handles the server's response.
+ * On success, it redirects the user to the newly created event's page.
+ * On failure, it displays an error message.
+ */
 function createEvent(){
     var data_d = {
        'eventName': $("#eventName").val(),

@@ -627,6 +627,7 @@ document.addEventListener('DOMContentLoaded', function() {
     //          Save Load, and Process User availability functions
     //-------------------------------------------------------------------------
 
+    // save all availability data when the page loads
     function saveAvailabilityBatch(cellsDataStrings) {
         // Convert stringified objects back to objects
         const cellsData = Array.from(cellsDataStrings).map(dataString => JSON.parse(dataString));

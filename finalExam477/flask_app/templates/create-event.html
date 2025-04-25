@@ -1,44 +1,44 @@
-<DOCTYPE html>
-    <html lang="eng">
-        <header>
-             <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
-            integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
-            crossorigin="anonymous"
-            referrerpolicy="no-referrer">
-            </script>
-            <link rel="stylesheet" href="{{ url_for('static', filename='create-event/css/create-event.css') }}">
-            <script src="{{ url_for('static', filename='create-event/js/create-event.js') }}"></script>
+<!DOCTYPE html>
+<html lang="eng">
+    <head>
+        <title>Create-Event</title>
+         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+        integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+        crossorigin="anonymous"
+        referrerpolicy="no-referrer">
+        </script>
+        <link rel="stylesheet" href="{{ url_for('static', filename='create-event/css/create-event.css') }}">
+        <script src="{{ url_for('static', filename='create-event/js/create-event.js') }}"></script>
 
-        </header>
-        <body>
-            <main>
-                <p><a href="/">Back to Home</a></p>
-               <h2>Create a New Event</h2>
-                <form id="create-event-form">
-                  <label>Event Name:</label>
-                  <input id="eventName" type="text" name="event_name" required><br>
+    </head>
+    <body>
+        <main>
+            <p><a href="/">Back to Home</a></p>
+           <h2>Create a New Event</h2>
+            <form id="create-event-form">
+              <label>Event Name:</label>
+                <label for="eventName"></label><input id="eventName" type="text" name="event_name" required><br>
 
-                  <label>Start Date:</label>
-                  <input id="startDate" type="date" name="start_date" required><br>
+              <label>Start Date:</label>
+                <label for="startDate"></label><input id="startDate" type="date" name="start_date" required><br>
 
-                  <label>End Date:</label>
-                  <input id="endDate" type="date" name="end_date" required><br>
+              <label>End Date:</label>
+                <label for="endDate"></label><input id="endDate" type="date" name="end_date" required><br>
 
-                  <label>Daily Start Time:</label>
-                  <input id="startTime" type="time" name="start_time" required><br>
+              <label>Daily Start Time:</label>
+                <label for="startTime"></label><input id="startTime" type="time" name="start_time" required><br>
 
-                  <label>Daily End Time:</label>
-                  <input id="endTime" type="time" name="end_time" required><br>
+              <label>Daily End Time:</label>
+                <label for="endTime"></label><input id="endTime" type="time" name="end_time" required><br>
 
-                  <label>Invitee Emails (comma-separated):</label>
-                  <input id="invitees" type="text" name="invitees" required><br>
+              <label>Invitee Emails (comma-separated):</label>
+                <label for="invitees"></label><input id="invitees" type="text" name="invitees" required><br>
 
-                  <input id="submit" type="submit" value="Create Event">
-                </form>
-                 <div id="forumFailure" class="alert alert-danger mt-3" style="display: none;">
-                    Complete All Of The Fields <span id="failureCount">0</span>
-                </div>
-            </main>
-        </body>
-    </html>
-</DOCTYPE>
+              <input id="submit" type="submit" value="Create Event">
+            </form>
+             <div id="forumFailure" class="alert alert-danger mt-3" style="display: none;">
+                Complete All Of The Fields <span id="failureCount">0</span>
+            </div>
+        </main>
+    </body>
+</html>

@@ -19,6 +19,11 @@ const validateEmail = (email) => {
     }
 };
 
+/**
+ * Validates the format of an email address using a regular expression.
+ * @param {string} email - The email address to validate.
+ * @returns {boolean} - True if the email format is valid, false otherwise. Returns false if email is undefined.
+ */
 function validate() {
     console.log("validating...");
     const email = $('#email').val();
@@ -51,6 +56,12 @@ function validate() {
     }
 }
 
+/**
+ * Handles the signup process. It first validates the user input using the validate function.
+ * If validation is successful, it sends an AJAX PUT request to the "/processSignup" endpoint
+ * with the user's email, password, and role. On successful registration, it redirects the user to the login page.
+ * If validation fails, it displays the corresponding error message.
+ */
 function signUp(){
     //check if passwords match
     // Hide all possible alerts first

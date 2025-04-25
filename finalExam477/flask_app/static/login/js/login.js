@@ -14,7 +14,12 @@ let logged = false;
 
 let count = 0;
 
-
+/**
+ * Sends an AJAX POST request to the "/processlogin" endpoint to verify user credentials.
+ * It retrieves the email and password from the input fields, sends them to the server,
+ * and handles the server's response to either redirect to the dashboard on successful login
+ * or display an error message on failed login.
+ */
 function checkCredentials() {
     console.log("credentials is working!")
     var data_d = {

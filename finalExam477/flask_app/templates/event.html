@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="eng">
     <head>
         <title>Event Details</title>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
@@ -27,7 +27,7 @@
 
             <div class="availability-controls">
                 <strong>Set Availability:</strong>
-                <select id="availabilityMode" class="mode-selector">
+                <label for="availabilityMode"></label><select id="availabilityMode" class="mode-selector">
                     <option value="available">Available</option>
                     <option value="maybe">Maybe</option>
                     <option value="unavailable">Unavailable</option>
@@ -123,7 +123,6 @@
         <div id="othersAvailabilityData" style="display: none;">{{ others_availability|safe }}</div>
         <script src="{{ url_for('static', filename='event/js/event.js') }}"></script>
 
-                <!-- Add this at the end of your body tag -->
         <div class="loading-overlay">
             <div class="spinner"></div>
         </div>
