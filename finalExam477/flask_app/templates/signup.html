@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="eng">
+    <header>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+        integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+        crossorigin="anonymous"
+        referrerpolicy="no-referrer">
+    </script>
+        <link rel="stylesheet" href="{{ url_for('static', filename='login/css/login.css') }}">
+        <script src="{{ url_for('static', filename='signup/js/signup.js') }}"></script>
+    </header>
+    <body>
+        <main>
+            <div class="login-container">
+                <div class="row">
+                    <div class="col-md-6 offset-md-3">
+                        <div class="card mt-5">
+                            <div class="card-header">
+                                <h3>Sign Up</h3>
+                            </div>
+                            <div class="card-body">
+                                <form id="loginForm">
+                                    <div class="form-group">
+                                        <label for="email">Email address</label>
+                                        <input type="email" class="form-control" id="email" name="email" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="password">Password</label>
+                                        <input type="password" class="form-control" id="password" name="password" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="conf-password">Confirm Password</label>
+                                        <input type="password" class="form-control" id="conf-password" name="password" required>
+                                    </div>
+                                    <button id="signup-submit" type="button" class="btn btn-primary" >Sign Up</button>
+                                </form>
+                                  <div id="loginFailure2" class="alert alert-danger mt-3" style="display: none;">
+                                    Please Confirm Password.
+                                </div>
+                                <div id="loginFailure3" class="alert alert-danger mt-3" style="display: none;">
+                                    Please Enter A Password.
+                                </div>
+                                <div id="loginFailure4" class="alert alert-danger mt-3" style="display: none;">
+                                    Passwords Do Not Match.
+                                </div>
+                                <div id="loginFailure5" class="alert alert-danger mt-3" style="display: none;">
+                                    Password Must Be at least 8 Characters Long.
+                                </div>
+                                <div id="loginFailure6" class="alert alert-danger mt-3" style="display: none;">
+                                    Please Input A Valid Email.
+                                </div>
+                                 <div id="loginFailure7" class="alert alert-danger mt-3" style="display: none;">
+                                    Error Signing Up.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </body>
+</html>

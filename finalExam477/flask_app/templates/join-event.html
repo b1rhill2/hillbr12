@@ -1,0 +1,25 @@
+<html lang="eng">
+    <body>
+        <p><a href="/">Back to Home</a></p>
+        <h2>Events You're Invited To</h2>
+        {% if data %}
+            <ul>
+            {% for event in data %}
+                <li>
+                    <strong>{{ event.event_name }}</strong><br>
+                    Creator: {{ event.creator_email }}<br>
+                    Dates: {{ event.start_date }} - {{ event.end_date }}<br>
+                    <form action="/event/{{event.event_id}}" method="GET" style="margin-top: 5px;">
+                        <input type="hidden" name="event_id" value="{{ event.event_id }}">
+                        <button type="submit">Open Event</button>
+                    </form>
+                </li>
+                <br>
+            {% endfor %}
+            </ul>
+        {% else %}
+            <p>No events to join at the moment.</p>
+        {% endif %}
+
+    </body>
+</html>

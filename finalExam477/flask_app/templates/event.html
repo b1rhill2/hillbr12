@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Event Details</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='event/css/event.css') }}">
+         <meta name="user-email" content="{{ session.get('email') }}">
+        <meta name="user-id" content="{{ user_data.user_id if user_data else '' }}">
+
+
+    </head>
+    <body>
+        <p><a href="/">Back to Home</a></p>
+        <h3>Logged in as: {{ session.get('email') }}</h3>
+        {% if data %}
+            {% set event_id = data.keys()|first %}
+            {% set event = data[event_id] %}
+
+            <div class="event-metadata" data-event-id="{{ event_id }}">
+                <h1>{{ event.event_name }}</h1>
+                <p>
+                    <strong>Date Range:</strong>
+                    {{ event.start_date }}
+                    {% if event.start_date != event.end_date %}–{{ event.end_date }}{% endif %}
+                </p>
+            </div>
+
+            <div class="availability-controls">
+                <strong>Set Availability:</strong>
+                <select id="availabilityMode" class="mode-selector">
+                    <option value="available">Available</option>
+                    <option value="maybe">Maybe</option>
+                    <option value="unavailable">Unavailable</option>
+                </select>
+                <span id="selectedMode" class="selected-mode">Available</span>
+            </div>
+
+            <h2>Availability Grid</h2>
+            <table class="availability-grid">
+                <thead>
+                    <tr>
+                        <th>Time</th>
+                        {% set dates = [] %}
+                        {% set start_date_obj = event.start_date %}
+                        {% set end_date_obj = event.end_date %}
+                        {% set num_days = (end_date_obj - start_date_obj).days + 1 %}
+                        {% for i in range(num_days) %}
+                            {% set current_date = start_date_obj + timedelta(days=i) %}
+                            <th>{{ current_date.strftime('%a, %b %d') }}</th>
+                            {% set _ = dates.append(current_date.strftime('%Y-%m-%d')) %}
+                        {% endfor %}
+                    </tr>
+                </thead>
+                <tbody>
+                    {% set start_hour = event.start_time.split(':')[0] | int %}
+                    {% set end_hour = event.end_time.split(':')[0] | int %}
+                    {% for hour in range(start_hour, end_hour + (1 if event.end_time.split(':')[1] != '00' else 0)) %}
+                        {% for minute in ["00", "30"] %}
+                            {% set time_slot_start = "{:02d}:{}".format(hour, minute) %}
+                            {% set next_minute = "30" if minute == "00" else "00" %}
+                            {% set next_hour = hour if minute == "00" else hour + 1 %}
+                            {% set time_slot_end = "{:02d}:{}".format(next_hour, next_minute) %}
+                            <tr>
+                                <th>{{ time_slot_start }}– {{ time_slot_end }}</th>
+                                {% for date_str in dates %}
+                                    <td
+                                        class="availability-cell"
+                                        data-date="{{ date_str }}"
+                                        data-start-time="{{ time_slot_start }}"
+                                        data-end-time="{{ time_slot_end }}"
+
+                                    ></td>
+                                {% endfor %}
+                            </tr>
+                        {% endfor %}
+                    {% endfor %}
+                </tbody>
+            </table>
+
+            <div class="heatmap-legend">
+                <h3>Availability Legend</h3>
+                <div class="legend-item">
+                    <div class="legend-color heatmap-available-1"></div>
+                    <span>1 person available</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color heatmap-available-2"></div>
+                    <span>2 people available</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color heatmap-available-3"></div>
+                    <span>3 people available</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color heatmap-available-many"></div>
+                    <span>4+ people available</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color heatmap-maybe"></div>
+                    <span>Some people selected "Maybe" (no one available)</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color heatmap-unavailable"></div>
+                    <span>Only unavailable responses</span>
+                </div>
+            </div>
+
+            <h2>Participants:</h2>
+            {% if event.event_participants %}
+                <ul>
+                {% for participant_id, participant_info in event.event_participants.items() %}
+                    <li>Email: {{ participant_info.user_email }} (ID: {{ participant_id }})</li>
+                {% endfor %}
+                </ul>
+            {% else %}
+                <p>No participants have been invited yet.</p>
+            {% endif %}
+
+        {% else %}
+            <p>Event not found.</p>
+        {% endif %}
+<!--        <div id="userAvailabilityData" style="display: none;">{{ availability_data|safe }}</div>-->
+        <div id="othersAvailabilityData" style="display: none;">{{ others_availability|safe }}</div>
+        <script src="{{ url_for('static', filename='event/js/event.js') }}"></script>
+
+                <!-- Add this at the end of your body tag -->
+        <div class="loading-overlay">
+            <div class="spinner"></div>
+        </div>
+
+    </body>
+</html>

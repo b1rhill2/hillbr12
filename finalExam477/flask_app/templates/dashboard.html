@@ -1,0 +1,11 @@
+<p>Events Page Works</p>
+
+{% if user == "Unknown" %}
+    <button onclick="location.href='/login'" type="button">Login</button>
+{% else %}
+    <button onclick="location.href='/logout'" type="button">Logout</button>
+{% endif %}
+
+<h2>Welcome, {{ user }}</h2>
+<button onclick="location.href='/create-event'">Create New Event</button>
+<button onclick="location.href='/joinEvent'">Join Existing Event</button>
