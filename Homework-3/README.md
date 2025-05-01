@@ -244,9 +244,5 @@ Service URL: https://homework-z7tywrhkpa-uc.a.run.app
 
 
 
-##### Submit Homework 3 Survey:
-
-[Submit the Service URL for your live web application in this Google Form](https://docs.google.com/forms/d/e/1FAIpQLScMc9cRF5JlD1SKQgVlcF93qGmbXB5bEHfvpnn5Edf20cCQBA/viewform 
-
 
 
